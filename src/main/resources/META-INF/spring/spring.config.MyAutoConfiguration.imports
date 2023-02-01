@@ -1,2 +1,5 @@
 spring.config.autoconfig.TomcatWebServerConfig
 spring.config.autoconfig.DispatcherServletConfig
+spring.config.autoconfig.JettyWebServerConfig
+spring.config.autoconfig.PropertiesPlaceholderConfig
+spring.config.autoconfig.PropertyPostProcessorConfig
