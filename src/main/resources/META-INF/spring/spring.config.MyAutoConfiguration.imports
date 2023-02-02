@@ -3,3 +3,4 @@ spring.config.autoconfig.DispatcherServletConfig
 spring.config.autoconfig.JettyWebServerConfig
 spring.config.autoconfig.PropertiesPlaceholderConfig
 spring.config.autoconfig.PropertyPostProcessorConfig
+spring.config.autoconfig.DataSourceConfig
