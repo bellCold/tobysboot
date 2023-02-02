@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class HelloServiceTest {
-    @Autowired HelloService helloService;
+    @Autowired
+    HelloService helloService;
+
     @Test
     void simpleHelloService() {
         SimpleHelloService helloService = new SimpleHelloService(helloRepositoryStub);
@@ -27,11 +29,11 @@ class HelloServiceTest {
         }
     };
 
-
     @Test
     void decoratorTest() {
-        HelloDecorator helloDecorator = new HelloDecorator(helloService);
+        HelloDecorator helloDecorator = new HelloDecorator(name -> name);
         String ret = helloDecorator.sayHello("Test");
+        System.out.println(ret);
 
         assertThat(ret).isEqualTo("*Test*");
     }

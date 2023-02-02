@@ -4,11 +4,14 @@ package spring.helloboot;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.stream.IntStream;
 
-@HelloBootTest
-public class SimpleHelloServiceTest {
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@Transactional
+public class HelloServiceCountTest {
     @Autowired
     HelloService helloService;
     @Autowired
@@ -18,8 +21,8 @@ public class SimpleHelloServiceTest {
     @Test
     void sayHelloIncreaseCount() {
         IntStream.rangeClosed(1, 10).forEach(count -> {
-            helloService.sayHello("JongChan");
-            Assertions.assertThat(helloRepository.countOf("JongChan")).isEqualTo(count);
+            helloService.sayHello("jong");
+            Assertions.assertThat(helloRepository.countOf("jong")).isEqualTo(count);
         });
     }
 }

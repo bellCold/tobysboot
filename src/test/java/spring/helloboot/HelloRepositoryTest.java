@@ -1,21 +1,24 @@
 package spring.helloboot;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.transaction.annotation.Transactional;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
-@HelloBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@Transactional
 public class HelloRepositoryTest {
-    @Autowired HelloRepositoryJdbc helloRepositoryJdbc;
-    @Autowired JdbcTemplate jdbcTemplate;
+    @Autowired
+    HelloRepositoryJdbc helloRepositoryJdbc;
+    @Autowired
+    JdbcTemplate jdbcTemplate;
 
     @Test
     void noSearchHell() {
-        Hello jong = helloRepositoryJdbc.findHello("jong");
-        assertThat(jong).isNull();
+        assertThat(helloRepositoryJdbc.findHello("jong")).isNull();
     }
 
     @Test
